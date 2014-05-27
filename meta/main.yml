@@ -56,7 +56,7 @@ galaxy_info:
   #  - 9.2
   - name: Ubuntu
     versions:
-    - all
+  #  - all
   #  - lucid
   #  - maverick
   #  - natty
@@ -65,7 +65,7 @@ galaxy_info:
   #  - quantal
   #  - raring
   #  - saucy
-  #  - trusty
+    - trusty
   #- name: SLES
   #  versions:
   #  - all
@@ -90,7 +90,7 @@ galaxy_info:
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.
   #
-  #categories:
+  categories:
   #- cloud
   #- cloud:ec2
   #- cloud:gce
@@ -104,7 +104,7 @@ galaxy_info:
   #- networking
   #- packaging
   #- system
-  #- web
+  - web
 dependencies: []
   # List your role dependencies here, one per line. Only
   # dependencies available via galaxy should be listed here.
