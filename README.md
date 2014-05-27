@@ -17,7 +17,7 @@ Role Variables
 | ghost_path | The full path where ghost is deployed  |
 | ghost_port | What port ghost will listen on |
 | ghost_ver | Currently set to latest, need to find further reference on their dl page for version drop in |
-| ghost_url | The url that ghost should listen on, IP works well for dev |
+| ghost_url | URL for ghost, IP works well for dev. Role will use the targets IP as url unless adjusted. |
 | site_type | production, development callable NODE_ENV's in config.js |
 
 Dependencies
@@ -34,6 +34,10 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - { role: LukeT.ghost }
 
+Service will report as running if successfully ran.
+
+    root@ghost-pig:~# service ghost status
+    * ghost is running
 License
 -------
 

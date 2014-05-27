@@ -4,8 +4,11 @@
 - name: Grab {{ ghost_ver }} version of Ghost.
   local_action: command /usr/bin/curl -L https://ghost.org/zip/ghost-{{ ghost_ver }}.zip -o ghost.zip
 
+- name: Update apt for latest node versions
+  apt: update_cache=yes
+  
 - name: Install required packages
-  apt: update_cache=yes name={{ item }} state=latest
+  apt: name={{ item }} state=latest
   with_items:
     - nodejs
     - nodejs-legacy
@@ -18,17 +21,17 @@
 - name: Move ghost-{{ ghost_ver }} to target {{ ghost_path }}
   unarchive: src=ghost.zip dest={{ ghost_path }} creates=yes
 
-- name: Copy config.js template
-  template: src=config.js.j2 dest={{ ghost_path }}/config.js
-
-- name: Use npm to install the app
-  npm: path={{ ghost_path }} production=yes state=latest
-
 - name: Add ghost daemon user
   user: user=ghost state=present system=yes
 
 - name: Add the init script
   template: src=ghost_init.j2 dest=/etc/init.d/ghost mode=755
+
+- name: Copy config.js template
+  template: src=config.js.j2 dest={{ ghost_path }}/config.js
+
+- name: Use npm to install the app
+  npm: path={{ ghost_path }} production=yes state=latest
 
 - name: Ensure our site is owned by ghost:ghost
   file: path={{ ghost_path }} state=directory owner=ghost recurse=yes

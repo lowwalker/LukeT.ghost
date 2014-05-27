@@ -4,5 +4,5 @@
 ghost_path: '/opt/slimer'
 ghost_port: '2368'
 ghost_ver: 'latest'
-ghost_url: '192.168.0.55' #
+ghost_url: '{{ ansible_eth0.ipv4.address }}'
 site_type: 'production'
