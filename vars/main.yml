@@ -1,0 +1,9 @@
+---
+# vars file for LukeT.ghost
+
+ghost_path: '/opt/slimer'
+ghost_port: '2368'
+ghost_ver: 'latest'
+ghost_url: '107.170.190.137'
+
+site_type: 'production'
